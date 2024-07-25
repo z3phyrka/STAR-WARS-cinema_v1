@@ -1,0 +1,100 @@
+h1 {position: relative; margin-left: 10px;
+margin-bottom: 10px;
+}
+
+body{
+  position: relative;
+background-color: #000;  display: flex;
+  justify-content: center;  height: 100vh;
+  margin-top: 30px; margin-left: 480px;
+}
+.form {  background-color: #a50808fc;
+  border-radius: 30px;  box-sizing: border-box;
+  height: 600px;  padding: 25px;
+  width: 320px; margin-right: 2px;
+position: relative;}
+.title {
+  color: #eee;
+  font-family: "Oswald", sans-serif; 
+  font-size: 36px;
+  font-weight: 600;  margin-top: 30px;
+}
+.subtitle {  color: #eee;
+  font-family: "Oswald", sans-serif;
+  font-size: 16px;
+  font-weight: 600;  margin-top: 10px;
+}
+.input-container {  height: 50px;
+  position: relative;  width: 100%;
+}
+.ic1 {  margin-top: 40px;
+}
+.ic2 {  margin-top: 30px;
+}
+.input {
+  position: relative;
+  background-color: #7d0606;  border-radius: 12px;
+  border: 0;  box-sizing: border-box;
+  color: #eee;  font-size: 18px;
+  height: 100%;  outline: 0;
+  padding: 4px 20px 0;  width: 100%;
+}
+.cut {  background-color: #a50808fc;
+  border-radius: 10px;  height: 20px;
+  left: 20px;
+  position: absolute;  top: -20px;
+  transform: translateY(0);  transition: transform 200ms;
+  width: 100px;}
+.cut-short {
+  width: 100px;}
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {  transform: translateY(8px);
+}
+.placeholder {
+  color: #ffffff;  font-family: sans-serif;
+  left: 20px;  line-height: 1px;
+  pointer-events: none;  position: absolute;
+  transform-origin: 0 50%;  transition: transform 200ms, color 200ms;
+  top: 23px;}
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+.input:not(:placeholder-shown) ~ .placeholder {  color: #e8e8ea;
+}
+.input:focus ~ .placeholder {  color: #ffffff;
+}
+.submit {  background-color: rgb(108, 0, 0);
+  border-radius: 12px;  border: 0;
+  box-sizing: border-box;  color: #eee;
+  cursor: pointer;  font-size: 20px;
+  height: 50px;  margin-top: 40px;
+  outline: 0;  text-align: center;
+  width: 100%;}
+  
+.submit:active {
+  background-color: rgb(92, 2, 2);
+}
+
+img.background {
+  min-height: 100%;
+  min-width: 640px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  @media screen and (max-width: 640px){
+	img.bg {
+	  left: 50%;
+	  margin-left: -320px;
+	}
+  }
+}
+
+.regback {position: relative;
+  margin-left: 460px;
+}
+
+h7 {margin-top: 10px; margin-right: 50px;
+  position: relative;}

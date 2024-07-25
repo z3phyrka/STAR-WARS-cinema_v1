@@ -1,0 +1,77 @@
+h2 {margin-left: 1300px;
+  position: relative;}
+  
+h3 {position: absolute;margin-bottom: 200px;}
+
+h5 {position: relative;margin-top: 50px;
+margin-left: 1290px}
+
+h6 {position: relative;margin-top:50px;
+margin-right: 10px; }
+  
+body{
+    background-color: #000000;  display: flex;
+      justify-content: center;  height: 100vh;
+}
+h1 {position: relative;
+    font-family: "Oswald", sans-serif;
+    color: hsl(0, 100%, 50%);
+}
+
+h7 {margin-top: 10px; margin-right: 50px;
+  position: relative;}
+  
+h8 {margin-right: 40px; position: relative;
+  font-family: "Oswald", sans-serif;
+  color: hsl(0, 100%, 50%);
+}
+
+h9 {position: relative;
+margin-right: 1300px;}
+
+h10 {position: relative; margin-right: 50px}
+
+img.background {
+  min-height: 100%;
+  min-width: 640px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  @media screen and (max-width: 640px){
+	img.bg {
+	  left: 50%;
+	  margin-left: -320px;
+	}
+  }
+}
+
+h4 {position: relative;}
+
+.next {
+  margin-bottom: 300px;
+}
+
+.back {
+  margin-bottom: 300px;
+}
+
+.film1 {
+  margin-left: 58px;
+}
+
+.film6 {
+  margin-right: 58px;
+}
+
+.poster1 {
+  position: relative;
+  width: 350px;
+}
+
+.poster2 {
+  position: relative;
+  width: 350px; margin-left: 1000px;
+}
