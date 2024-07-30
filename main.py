@@ -1,3 +1,4 @@
+from concurrent.futures import thread
 from fastapi import FastAPI, Form, status, HTTPException, Depends, Request, Response, Query
 from fastapi.responses import RedirectResponse, HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
@@ -9,6 +10,12 @@ from sqlalchemy import create_engine
 from fastapi import FastAPI, Form, status, Depends
 from sqlalchemy.orm import Session, sessionmaker
 from typing import Optional, Annotated
+import sys
+import time
+import threading
+import webbrowser
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+
 
 
 
@@ -26,13 +33,14 @@ session = Session(bind=engine)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+
 @app.get('/login', tags=['Pages'])
 async def get_login_page(request: Request):
     cookie = request.cookies.get('id')
-    
+
     if cookie != None:
-        return RedirectResponse('/profile/'+cookie, status_code=302)
-    
+        return RedirectResponse(f'/profile/{cookie}', status_code=302)
+
     return templates.TemplateResponse('reg.html', {'request': request})
 
 @app.get('/reg', tags=['Pages'])
@@ -49,15 +57,15 @@ async def create_a_customer(first_name: str = Form(...),
     
     statement = select(User).where(User.email == email)
     result = session.exec(statement).one_or_none()
-    
+
     new_cust = User(first_name=first_name, second_name=second_name,
                         email=email, password=password)
-    
-    if result == None:
+
+    if result is None:
         session.add(new_cust)
         session.commit()
-        
-        response = RedirectResponse('/profile/'+str(new_cust.id), status_code=302)
+
+        response = RedirectResponse(f'/profile/{str(new_cust.id)}', status_code=302)
         if remember == True:
             response.set_cookie(key="id", value=str(new_cust.id), max_age=15695000)
         return response
@@ -116,8 +124,22 @@ async def reg(request: Request):
 async def reg(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
+ip = "127.0.0.1"
+port = 8000
+url = f"http://{ip}:{port}/home.html"
 
-def get_session() -> Session: # type: ignore
+
+def start_server():
+    server_address = (ip, port)
+    httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
+    httpd.serve_forever()
+
+
+threading.Thread(target=start_server).start()
+webbrowser.open_new(url)
+
+        
+def get_session() -> Session:
     try:
         yield session
     finally:
